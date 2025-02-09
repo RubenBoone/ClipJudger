@@ -80,8 +80,15 @@ const vGetMessages = async (interaction) => {
         const outputMessage = await interaction.client.channels.cache.get(settings['outputChannel'])
             .send({ content: `${roletext}${interaction.user} shared: ${clipURL}` });
         await interaction.reply({ content: 'Your clip has been sent to the mods for approval!', flags: MessageFlags.Ephemeral });
-        outputMessage.react('✅');
-        outputMessage.react('❌');
+        try {
+            outputMessage.react('✅');
+            outputMessage.react('❌');
+        } catch (err) {
+            interaction.channel.send({ content: 'Something went wrong with adding reactions to the message...' });
+            console.log(new Date().getTime(), err);
+
+        }
+
     }
 }
 

@@ -39,10 +39,13 @@ client.on(Events.ClientReady, (c) => {
 client.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
-    uClearChat(interaction);
+    try {
+        uClearChat(interaction);
 
-    vSetup(interaction);
-    vGetMessages(interaction);
+        vSetup(interaction);
+        vGetMessages(interaction);
+    } catch (error) { interaction.reply({ content: 'An unexpected error occured :skull:', ephemeral: true }); }
+
 });
 
 client.on(Events.MessageReactionAdd, async (reaction, user) => {
