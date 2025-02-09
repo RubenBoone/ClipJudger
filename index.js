@@ -1,6 +1,6 @@
 import { REST, Routes, ActivityType } from 'discord.js';
 import { commands } from './Utilities/commands.js';
-import { vSetup, vCheckReaction, vGetMessages } from './Verifier/verifier.js';
+import { vSetup, vCheckReaction, vGetMessages, vWatchClipChannel } from './Verifier/verifier.js';
 import { uClearChat } from './Utilities/utilities.js';
 import fs from 'fs';
 
@@ -55,11 +55,8 @@ client.on(Events.MessageReactionAdd, async (reaction, user) => {
 client.on(Events.MessageCreate, async message => {
     if (message.author.bot) return;
     if (!message.member.permissions.has('Administrator')) {
-        message.delete();
-        const warning = message.channel.send({ content: `${message.author}, please use "/postclip" to sumbit a clip! :clapper:` });
-        setTimeout(() => { warning.then(m => m.delete()) }, 10000);
+        vWatchClipChannel(message);
     }
-
 });
 
 client.login(config.token);

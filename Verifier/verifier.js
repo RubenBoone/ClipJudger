@@ -92,6 +92,13 @@ const vGetMessages = async (interaction) => {
     }
 }
 
+const vWatchClipChannel = async (message) => {
+    if (message.channel.id !== settings['inputChannel']) return;
+    message.delete();
+    const warning = message.channel.send({ content: `${message.author}, please use "/postclip" to sumbit a clip! :clapper:` });
+    setTimeout(() => { warning.then(m => m.delete()) }, 10000);
+}
+
 const vCheckReaction = async (reaction, user) => {
     if (user.bot) return;
     if (reaction.message.channel.id !== settings['outputChannel']) return;
@@ -111,4 +118,4 @@ const vCheckReaction = async (reaction, user) => {
     }
 }
 
-export { vSetup, vGetMessages, vCheckReaction };
+export { vSetup, vGetMessages, vCheckReaction, vWatchClipChannel };
