@@ -92,11 +92,6 @@ const vGetMessages = async (interaction) => {
     }
 }
 
-const vWatchChannel = async (message) => {
-
-}
-
-
 const vCheckReaction = async (reaction, user) => {
     if (user.bot) return;
     if (reaction.message.channel.id !== settings['outputChannel']) return;
