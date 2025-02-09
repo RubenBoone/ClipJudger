@@ -22,3 +22,7 @@ This Discord bot will give you the ability to setup a clips channel and let user
 ## 📄 Configuration
 - Put your Discord bot token into ```config.json```
 - When the bot is running use ```/setupverify``` and follow the steps
+
+# 📈 Future plans
+- More scaleable way to save and handle settings
+- More functionality
