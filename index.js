@@ -1,4 +1,4 @@
-import { REST, Routes } from 'discord.js';
+import { REST, Routes, ActivityType } from 'discord.js';
 import { commands } from './Utilities/commands.js';
 import { vSetup, vCheckReaction, vGetMessages } from './Verifier/verifier.js';
 import { uClearChat } from './Utilities/utilities.js';
@@ -28,6 +28,12 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.GuildMembers,
     ]
+});
+
+client.on(Events.ClientReady, (c) => {
+    console.log(`Logged in as ${c.user.tag}!`);
+
+    client.user.setActivity({ name: 'your clips!', type: ActivityType.Watching });
 });
 
 client.on(Events.InteractionCreate, async interaction => {
