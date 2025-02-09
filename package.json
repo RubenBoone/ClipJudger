@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "dependencies": {
+    "discord.js": "^14.17.3"
+  },
+  "scripts": {
+    "setup": "mkdir Data && echo {} > Data/verifydata.json && npm install",
+    "start": "node index.js"
+  }
+}
