@@ -37,9 +37,9 @@ const vSetup = async (interaction, collector) => {
             .setCustomId('roles')
             .setPlaceholder('Select a role to verify clips')
             .setMaxValues(5)
-            .setMinValues(1);
+            .setMinValues(0);
 
-        const replyMessage = await interaction.followUp({ content: 'Select the roles that can verify clips.', components: [new ActionRowBuilder().addComponents(roles)], flags: MessageFlags.Ephemeral });
+        const replyMessage = await interaction.followUp({ content: 'Select roles that want to receive a ping if there is a new request.', components: [new ActionRowBuilder().addComponents(roles)], flags: MessageFlags.Ephemeral });
 
         const roleCollector = replyMessage.createMessageComponentCollector({ componentType: ComponentType.RoleSelect });
 
@@ -75,7 +75,8 @@ const vGetMessages = async (interaction) => {
         const clipURL = interaction.options.getString('url');
         if (!urlRegex.test(clipURL)) return await interaction.reply({ content: 'Please provide a valid URL.', flags: MessageFlags.Ephemeral });
         let roletext = "";
-        settings["roles"].map(role => { roletext += `<@&${role}>` });
+        const roles = settings['roles'];
+        !roles ? roletext = " " : roles.map(role => { roletext += `<@&${role}>` });
         const outputMessage = await interaction.client.channels.cache.get(settings['outputChannel'])
             .send({ content: `${roletext}${interaction.user} shared: ${clipURL}` });
         await interaction.reply({ content: 'Your clip has been sent to the mods for approval!', flags: MessageFlags.Ephemeral });
