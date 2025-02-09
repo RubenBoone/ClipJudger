@@ -54,7 +54,11 @@ client.on(Events.MessageReactionAdd, async (reaction, user) => {
 
 client.on(Events.MessageCreate, async message => {
     if (message.author.bot) return;
-    if (!message.member.permissions.has('Administrator')) message.delete();
+    if (!message.member.permissions.has('Administrator')) {
+        message.delete();
+        const warning = message.channel.send({ content: `${message.author}, please use "/postclip" to sumbit a clip! :clapper:` });
+        setTimeout(() => { warning.then(m => m.delete()) }, 10000);
+    }
 
 });
 
