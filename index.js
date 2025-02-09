@@ -4,7 +4,7 @@ import { vSetup, vCheckReaction, vGetMessages } from './Verifier/verifier.js';
 import { uClearChat } from './Utilities/utilities.js';
 import fs from 'fs';
 
-const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'))[0];
+const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
 const rest = new REST({ version: '10' }).setToken(config.token);
 
