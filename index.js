@@ -49,4 +49,13 @@ client.on(Events.MessageReactionAdd, async (reaction, user) => {
     vCheckReaction(reaction, user);
 });
 
+client.on(Events.MessageCreate, async message => {
+    if (message.author.bot) return;
+    if (!message.member.permissions.has('Administrator')) message.delete();
+
+});
+
+const postclipCommand = commands.find(command => command.name === 'postclip');
+postclipCommand.perm
+
 client.login(config.token);
