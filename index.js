@@ -55,7 +55,4 @@ client.on(Events.MessageCreate, async message => {
 
 });
 
-const postclipCommand = commands.find(command => command.name === 'postclip');
-postclipCommand.perm
-
 client.login(config.token);
