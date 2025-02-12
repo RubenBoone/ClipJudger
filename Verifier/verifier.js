@@ -111,7 +111,7 @@ const vCheckReaction = async (reaction, user) => {
     const sanitizedMessageAuthor = messageAuthor.replace(/<@!?(\d+)>/g, '').trim();
 
     try {
-        await reaction.message.client.channels.cache.get(settings['inputChannel']).send({ content: `${originalMessageContent}` });
+        await reaction.message.client.channels.cache.get(settings['inputChannel']).send({ content: `${originalMessageContent} shared by ${messageAuthor}` });
         await reaction.message.delete();
     } catch (err) {
         reaction.message.channel.send({ content: 'Something went wrong, please try again later.' });
