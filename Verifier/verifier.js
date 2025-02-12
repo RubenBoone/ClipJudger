@@ -106,7 +106,7 @@ const vCheckReaction = async (reaction, user) => {
     if (reaction.emoji.name === '❌') return await reaction.message.delete();
 
     const message = reaction.message.content.split(' shared: ')
-    const originalMessageContent = message[1].trim();
+    const originalMessageContent = "<@" + message[1].trim().split('><@')[1];
     const messageAuthor = message[0];
     const sanitizedMessageAuthor = messageAuthor.replace(/<@!?(\d+)>/g, '').trim();
 
