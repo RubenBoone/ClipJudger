@@ -107,8 +107,6 @@ const vCheckReaction = async (reaction, user) => {
 
     const message = reaction.message.content.split(' shared: ')
     const pings = message[0].split('><@');
-    console.log(pings[pings.length - 1]);
-
     const originalMessageContent = message[1].trim();
     const messageAuthor = "<@" + pings[pings.length - 1];
 
