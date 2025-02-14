@@ -8,13 +8,11 @@ This Discord bot will give you the ability to setup a clips channel and let user
 
 ## 🔧 Setup
 1. **Clone the repository**
-  ```bash git clone https://github.com/RubenBoone/UtilBot && cd UtilBot```
-2. **Install dependencies**
-   ```bash npm install```
-4. **Run the setup script**
-   ```bash npm run setup```
+   ```git clone https://github.com/RubenBoone/UtilBot && cd UtilBot```
+3. **Install dependencies**
+   ```npm install```
 ## 🚀 Start the Bot
- ```bash npm start```
+   ```npm start```
 
  ## 📦 Dependencies
  - [discord.js](https://discord.js.org/)
